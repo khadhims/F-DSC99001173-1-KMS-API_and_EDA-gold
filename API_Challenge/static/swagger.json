@@ -1,0 +1,119 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "API untuk membersihkan teks dan file CSV",
+    "version": "1.0.0",
+    "title": "Cleansing API"
+  },
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "cleansing",
+      "description": "Operasi untuk membersihkan teks"
+    }
+  ],
+  "paths": {
+    "/clean_text": {
+      "post": {
+        "tags": ["cleansing"],
+        "summary": "Membersihkan teks",
+        "description": "Mengambil teks input dan mengembalikan teks yang sudah dibersihkan",
+        "parameters": [
+          {
+            "name": "text",
+            "in": "formData",
+            "description": "Teks yang akan dibersihkan",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Teks yang sudah dibersihkan",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "cleaned_text": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/upload_csv": {
+      "post": {
+        "tags": ["cleansing"],
+        "summary": "Upload dan membersihkan file CSV",
+        "description": "Mengambil file CSV dan mengembalikan file yang sudah dibersihkan",
+        "parameters": [
+          {
+            "name": "file",
+            "in": "formData",
+            "description": "File CSV yang akan dibersihkan",
+            "required": true,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "File yang sudah dibersihkan",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "file_path": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/get_data": {
+      "get": {
+        "tags": ["cleansing"],
+        "summary": "Mengambil data bersih",
+        "description": "Mengambil data yang sudah dibersihkan dari database.",
+        "responses": {
+          "200": {
+            "description": "Data yang sudah dibersihkan",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "description": "ID dari data bersih"
+                          },
+                          "cleaned_text": {
+                            "type": "string",
+                            "description": "Teks yang sudah dibersihkan"
+                          },
+                          "filename_text": {
+                            "type": "string",
+                            "description": "Nama file yang sudah dibersihkan"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
