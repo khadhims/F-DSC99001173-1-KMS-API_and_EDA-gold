@@ -73,47 +73,6 @@
           }
         }
       }
-    },
-    "/get_data": {
-      "get": {
-        "tags": ["cleansing"],
-        "summary": "Mengambil data bersih",
-        "description": "Mengambil data yang sudah dibersihkan dari database.",
-        "responses": {
-          "200": {
-            "description": "Data yang sudah dibersihkan",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "integer",
-                            "description": "ID dari data bersih"
-                          },
-                          "cleaned_text": {
-                            "type": "string",
-                            "description": "Teks yang sudah dibersihkan"
-                          },
-                          "filename_text": {
-                            "type": "string",
-                            "description": "Nama file yang sudah dibersihkan"
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
     }
   }
 }
